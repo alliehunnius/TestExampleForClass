@@ -1,4 +1,4 @@
-public class StringWriter.java {
+public class StringWriter {
     public File file = new File ("file.txt");
     public void convert (File file) {
 
