@@ -1,19 +1,10 @@
-import java.io.BufferedWriter;
+
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.util.*;
 public class StringWriter {
-
-        public static void main (String[] args) throws Throwable
-        {
-            stringToFile ("Hello \n what is my");
-            fileToString("output.txt");
-        }
 
         public static void stringToFile (String string) throws IOException
         {
@@ -51,9 +42,22 @@ public class StringWriter {
             {
                 throw e;
             }
-            
-   
-
+        }
+        
+        public static int countCharacters (String fileName) throws IOException {
+            BufferedReader br = new BufferedReader (new FileReader(fileName));
+            int count = 0;
+            while (br.ready()) {
+                br.read();
+                count++;
+            }
+            return count;
+        }
+         public static void main (String[] args) throws Throwable
+        {
+            stringToFile ("Hello \n what is my");
+            fileToString("output.txt");
+            System.out.println ("" + StringWriter.countCharacters("output.txt"));
         }
 
 
