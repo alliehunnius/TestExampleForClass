@@ -1,23 +1,60 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.*;
 public class StringWriter {
-    public File file = new File ("file.txt");
-    public void convert (File file) {
 
-        System.out.println ("Writing to message: " + file);
-    }
+        public static void main (String[] args) throws Throwable
+        {
+            stringToFile ("Hello \n hello2");
+            fileToString ();
+        }
 
-    public void writingToFile (String message)
-    {
-        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file)))) {
-    writer.write(message);
-    writer.newLine();  // method provided by BufferedWriter
-} catch (IOException e) {}
-    }
+        public static void stringToFile (String string) throws IOException
+        {
+     
+            // attach a file to FileWriter
+            FileWriter fw= new FileWriter("output.txt");
+     
+                fw.write(string);
+     
+            //close the file
+            fw.close();
+        }
 
-    public void FiletoString ()
-    {
-        Scanner scanner = new Scanner(file);
-String text = scanner.useDelimiter("\\A").next();
-scanner.close(); // Put this call in a finally block
-    }
+        public static void fileToString () throws Throwable
+        {
+            File file = new File ("output.txt");
+            char ch;
+ 
+             // check if File exists or not
+            FileReader fr;
+            try
+            {
+                fr = new FileReader("output.txt");
+                while(fr.ready())
+                {
+                    ch = (char) fr.read();
+                    System.out.print(ch);
+                }
+ 
+                fr.close();
+            } catch (Error | IOException e)
+            {
+                throw e;
+            }
+            
+   
+
+        }
+
+
+
+
 
 }
