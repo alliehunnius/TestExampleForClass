@@ -11,8 +11,8 @@ public class StringWriter {
 
         public static void main (String[] args) throws Throwable
         {
-            stringToFile ("Hello \n hello2");
-            fileToString ();
+            stringToFile ("Hello \n what is my");
+            fileToString("output.txt");
         }
 
         public static void stringToFile (String string) throws IOException
@@ -26,10 +26,13 @@ public class StringWriter {
             //close the file
             fw.close();
         }
-
-        public static void fileToString () throws Throwable
+        
+        //add input for file name
+        //change output to String
+        public static void fileToString (String fileName) throws Throwable
         {
-            File file = new File ("output.txt");
+            //File file = new File ("output.txt");
+            File file = new File (fileName);
             char ch;
  
              // check if File exists or not
